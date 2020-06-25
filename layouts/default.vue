@@ -1,66 +1,58 @@
 <template>
-  <div class="container">
-    <Nuxt/>
+  <div class="min-h-screen h-full w-full">
+    <div
+      v-if="isSidebarOpen"
+      class="lg:hidden fixed z-40 inset-0 bg-black opacity-50"
+      @click="closeSidebar"
+    ></div>
+
+    <Sidebar/>
+
+    <div>
+      <header>
+        <nav class="container px-6 lg:px-8 py-4 mx-auto">
+          <button class="text-gray-700 hover:text-gray-900 text-lg" @click="openSidebar">
+            <fa icon="bars"/>
+          </button>
+        </nav>
+      </header>
+
+      <div class="flex-grow flex flex-col items-center justify-center space-y-4">
+        <Logo :height="100" :width="100"/>
+        <h1 class="text-indigo-900 text-2xl font-bold">Nuxt.js Sidebar Navigation Example</h1>
+
+        <Nuxt/>
+      </div>
+    </div>
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-  color: #2E495E;
-}
+<script>
+import Logo from "~/components/Logo";
+import Sidebar from "~/components/Sidebar";
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
-}
+export default {
+  middleware: ["sidebar"],
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+  components: {
+    Logo,
+    Sidebar
+  },
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #00C48D;
-  color: #00C48D;
-  text-decoration: none;
-  padding: 10px 30px;
-  display: inline-flex;
-  align-self: center;
-}
+  computed: {
+    isSidebarOpen() {
+      return this.$store.state.sidebar.open;
+    }
+  },
 
-.button--green:hover {
-  color: #fff;
-  background-color: #00C48D;
-}
+  methods: {
+    openSidebar() {
+      this.$store.commit("sidebar/toggle", true);
+    },
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #2E495E;
-  color: #2E495E;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #2E495E;
-}
-</style>
+    closeSidebar() {
+      this.$store.commit("sidebar/toggle", false);
+    }
+  }
+};
+</script>

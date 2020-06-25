@@ -1,10 +1,5 @@
 export default {
-  /*
-   ** Rendering mode
-   ** Doc: https://nuxtjs.org/api/configuration-mode
-   */
   mode: "spa",
-
   target: "static",
 
   /*
@@ -12,7 +7,7 @@ export default {
    ** Doc: https://vue-meta.nuxtjs.org/api/#metainfo-properties
    */
   head: {
-    title: "Nuxt.js starter for CSB",
+    title: "[Nuxt] Sidebar Navigation",
     meta: [
       { charset: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
@@ -25,17 +20,12 @@ export default {
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
 
-  /*
-   ** Global CSS
-   ** Doc: https://nuxtjs.org/api/configuration-css
-   */
-  css: [],
-
-  /*
-   ** Plugins to load before mounting the App
-   ** Doc: https://nuxtjs.org/guide/plugins
-   */
-  plugins: [],
+  buildModules: [
+    // Doc: https://github.com/nuxt-community/tailwindcss-module
+    "@nuxtjs/tailwindcss",
+    // Doc: https://github.com/nuxt-community/fontawesome-module
+    "@nuxtjs/fontawesome"
+  ],
 
   /*
    ** Nuxt.js modules
@@ -48,21 +38,10 @@ export default {
     "./codesandbox"
   ],
 
-  /*
-   ** HTTP module configuration
-   */
-  http: {
-    // See https://http.nuxtjs.org/api/#options
-  },
-
-  /*
-   ** Build configuration
-   ** Doc: https://nuxtjs.org/api/configuration-build
-   */
-  build: {
-    /*
-     ** You can extend webpack config here
-     */
-    extend(config, ctx) {}
+  fontawesome: {
+    component: "fa",
+    icons: {
+      solid: ["faBars", "faTimes"]
+    }
   }
 };
