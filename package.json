@@ -1,0 +1,23 @@
+{
+  "name": "nuxt-close-sidebar-on-navigation",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Nuxt.js Team",
+  "private": true,
+  "scripts": {
+    "dev": "MINIMAL=1 CSB=1 nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "post-update": "yarn upgrade --latest"
+  },
+  "dependencies": {
+    "@fortawesome/free-solid-svg-icons": "5.13.1",
+    "@nuxt/http": "0.5.5",
+    "@nuxtjs/fontawesome": "1.1.2",
+    "@nuxtjs/tailwindcss": "2.0.0",
+    "nuxt": "2.13.1",
+    "reqlim": "^0.0.0"
+  },
+  "keywords": []
+}
