@@ -1,6 +1,6 @@
 <template>
   <div
-    class="fixed md:sticky z-50 left-0 inset-y-0 w-64 bg-gray-100 dark:bg-gray-900 border-r border-gray-400 dark:border-gray-600 overflow-y-auto transform md:translate-x-0 duration-200"
+    class="absolute z-50 left-0 inset-y-0 w-64 bg-gray-100 dark:bg-gray-900 border-r border-gray-400 dark:border-gray-600 overflow-y-auto transform duration-200"
     :class="
       isSidebarOpen
         ? 'translate-x-0 ease-out'
@@ -14,9 +14,15 @@
     </div>
 
     <div class="flex flex-col space-y-4 px-4 mt-4">
-      <nuxt-link to="/">Index</nuxt-link>
+      <nuxt-link
+        to="/"
+        class="px-4 py-2 mx-4 focus:shadow-outline focus:outline-none rounded-lg"
+      >Index</nuxt-link>
 
-      <nuxt-link to="/about">About</nuxt-link>
+      <nuxt-link
+        to="/about"
+        class="px-4 py-2 mx-4 focus:shadow-outline focus:outline-none rounded-lg"
+      >About</nuxt-link>
     </div>
   </div>
 </template>
@@ -39,3 +45,8 @@ export default {
 };
 </script>
 
+<style>
+.nuxt-link-exact-active {
+  @apply bg-gray-300 font-medium;
+}
+</style>

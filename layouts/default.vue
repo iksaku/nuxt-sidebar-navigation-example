@@ -1,27 +1,30 @@
 <template>
-  <div class="min-h-screen h-full w-full">
-    <div
-      v-if="isSidebarOpen"
-      class="lg:hidden fixed z-40 inset-0 bg-black opacity-50"
-      @click="closeSidebar"
-    ></div>
+  <div class="min-h-screen h-full w-full max-w-sm flex mx-auto">
+    <div class="relative flex-grow sm:border sm:m-4 sm:rounded-lg sm:shadow-lg">
+      <div class="relative">
+        <div
+          v-if="isSidebarOpen"
+          class="fixed z-40 inset-0 bg-black opacity-50"
+          @click="closeSidebar"
+        ></div>
+        <Sidebar/>
+      </div>
 
-    <Sidebar/>
+      <div>
+        <header>
+          <nav class="container px-6 lg:px-8 py-4 mx-auto">
+            <button class="text-gray-700 hover:text-gray-900 text-lg" @click="openSidebar">
+              <fa icon="bars"/>
+            </button>
+          </nav>
+        </header>
 
-    <div>
-      <header>
-        <nav class="container px-6 lg:px-8 py-4 mx-auto">
-          <button class="text-gray-700 hover:text-gray-900 text-lg" @click="openSidebar">
-            <fa icon="bars"/>
-          </button>
-        </nav>
-      </header>
+        <div class="flex-grow flex flex-col items-center justify-center text-center space-y-4">
+          <Logo :height="100" :width="100"/>
+          <h1 class="text-indigo-900 text-2xl font-bold">Nuxt.js Sidebar Navigation Example</h1>
 
-      <div class="flex-grow flex flex-col items-center justify-center space-y-4">
-        <Logo :height="100" :width="100"/>
-        <h1 class="text-indigo-900 text-2xl font-bold">Nuxt.js Sidebar Navigation Example</h1>
-
-        <Nuxt/>
+          <Nuxt/>
+        </div>
       </div>
     </div>
   </div>
